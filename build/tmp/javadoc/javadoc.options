@@ -1,0 +1,8 @@
+-classpath 'C:\\Users\\Kaouthar\\Desktop\\TP6\\build\\classes\\java\\main;C:\\Users\\Kaouthar\\Desktop\\TP6\\build\\resources\\main'
+-d 'C:\\Users\\Kaouthar\\Desktop\\TP6\\build\\docs\\javadoc'
+-doctitle ' ?matrix  1.0 API'
+-quiet 
+-windowtitle ' ?matrix  1.0 API'
+'C:\\Users\\Kaouthar\\Desktop\\TP6\\src\\main\\java\\com\\example\\exception\\NoSquareException.java'
+'C:\\Users\\Kaouthar\\Desktop\\TP6\\src\\main\\java\\com\\example\\model\\Matrix.java'
+'C:\\Users\\Kaouthar\\Desktop\\TP6\\src\\main\\java\\com\\example\\service\\MatrixMathematics.java'
