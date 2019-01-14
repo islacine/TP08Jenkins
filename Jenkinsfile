@@ -9,7 +9,7 @@ pipeline {
     }
     stage('mailNotification') {
       steps {
-        mail(subject: 'build failed', body: 'the builed has failed', bcc: 'fn_khettache@esi.dz', from: 'fk_mokrane@esi.dz')
+        mail(subject: 'build ', body: 'the builed ', bcc: 'fn_khettache@esi.dz', from: 'fk_mokrane@esi.dz')
       }
     }
   }
