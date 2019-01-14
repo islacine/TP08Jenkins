@@ -29,34 +29,6 @@ jacoco {
 }
 
 
-jacocoTestReport {
-    reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination file("build/reports/jacocoHtml")
-    }
-}
-
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            limit {
-                minimum = 0.8
-
-            }
-        }
-    }}
-pitest { targetClasses=['com.example.*']}
-
-
-task generateMatrixAPI(type:Copy){
-from ('build/reports/tests') { into  'TestReports' }
-    from ('build/reports/jacocoHtml') { into  'TestQualityReports/jacocoHtml' }
-    from ('build/reports/pitest') { into  'TestQualityReports/pitest' }
-    from ('build/docs') { into  'Documentation' }
-    from ('build/libs') { include '*.jar' into  'API' }
-    into "E:/MatrixRelease/Matrix_v_${version}"
-}
 
 uploadArchives{
     repositories{
@@ -70,11 +42,5 @@ uploadArchives{
     }
 }
 
-slack {
-    webhookUrl "https://hooks.slack.com/services/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"
-    username "Gradle"
-    shouldMonitor "uploadArchives"
-}
-test.finalizedBy "jacocoTestCoverageVerification","jacocoTestReport","pitest"
-generateMatrixAPI.dependsOn "build"
-uploadArchives.dependsOn "generateMatrixAPI"
+
+
