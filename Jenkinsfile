@@ -18,7 +18,7 @@ pipeline {
       }
       steps {
         withSonarQubeEnv('sonarqube') {
-          bat(script: 'C:\Users\Kaouthar\Desktop\SONARQUBE\sonarqube-7.3\sonarqube-7.3\bin\windows-x86-64 sonar-scanner', returnStatus: true, returnStdout: true)
+          bat(script: 'C:\Users\Kaouthar\Desktop\SONARQUBE\sonarqube-7.3\sonarqube-7.3\bin\windows-x86-64 sonar-runner', returnStatus: true, returnStdout: true)
         }
 
       }
