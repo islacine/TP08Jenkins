@@ -13,9 +13,12 @@ pipeline {
       }
     }
     stage('CodeAnalysis') {
+      environment {
+      def scannerHome: tool "SonarQubeScanner"
+      }
       steps {
         withSonarQubeEnv('sonarqube') {
-          bat(script: 'sonar-scanner', returnStatus: true, returnStdout: true)
+          bat(script: '${scannerHome}\\sonar-scanner', returnStatus: true, returnStdout: true)
         }
 
       }
