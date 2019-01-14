@@ -15,7 +15,7 @@ pipeline {
     stage('CodeAnalysis') {
       steps {
         withSonarQubeEnv('sonarqube') {
-          bat(script: 'sonar scaner', returnStatus: true, returnStdout: true)
+          bat(script: 'sonar-scanner', returnStatus: true, returnStdout: true)
         }
 
       }
