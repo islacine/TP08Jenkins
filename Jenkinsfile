@@ -12,5 +12,13 @@ pipeline {
         mail(subject: 'build ', body: 'the builed ', bcc: 'fn_khettache@esi.dz', from: 'fk_mokrane@esi.dz')
       }
     }
+    stage('CodeAnalysis') {
+      steps {
+        withSonarQubeEnv('sonarqube') {
+          bat(script: 'sonar scaner', returnStatus: true, returnStdout: true)
+        }
+
+      }
+    }
   }
 }
