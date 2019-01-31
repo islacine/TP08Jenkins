@@ -38,7 +38,7 @@ uploadArchives{
                 username "myMavenRepo"
                 password "pwd"
             }
-            url "https://mymavenrepo.com/repo/9tAqbuclrr1O2vznTfr7/"
+            url "https://mymavenrepo.com/repo/oETH1woVhU5ZDD1eEhGd/"
         }
     }
 }
