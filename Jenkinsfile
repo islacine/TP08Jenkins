@@ -6,12 +6,16 @@ pipeline {
         bat 'gradle build'
         bat(script: 'gradle uploadArchives', returnStatus: true, returnStdout: true)
       }
-    }
-    stage('mailNotification') {
-      steps {
-        mail(subject: 'build ', body: 'the builed ', bcc: 'fn_khettache@esi.dz', from: 'fk_mokrane@esi.dz')
+            post {
+      failure {
+        mail(subject: 'build failure ', body: 'the build failed ', bcc: 'fn_khettache@esi.dz', from: 'fk_mokrane@esi.dz')
+      }
+      success {
+        mail(subject: 'build success', body: 'the build succeeded ', bcc: 'fn_khettache@esi.dz', from: 'fk_mokrane@esi.dz')
       }
     }
+    }
+   
     stage('Code Analysis') {
       parallel {
         stage('Code Analysis') {
