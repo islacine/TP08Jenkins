@@ -12,15 +12,22 @@ pipeline {
         mail(subject: 'build ', body: 'the builed ', bcc: 'fn_khettache@esi.dz', from: 'fk_mokrane@esi.dz')
       }
     }
-    stage('CodeAnalysis') {
-      environment {
-      def scannerHome: tool "SonarQubeScanner"
-      }
-      steps {
-        withSonarQubeEnv('sonarqube') {
-          bat(script: 'C:\Users\Kaouthar\Desktop\SONARQUBE\sonarqube-7.3\sonarqube-7.3\bin\windows-x86-64 sonar-scanner', returnStatus: true, returnStdout: true)
-        }
+    stage('Code Analysis') {
+      parallel {
+        stage('Code Analysis') {
+          steps {
+            withSonarQubeEnv('sonarqube') {
+              bat 'sonar-scanner'
+            }
 
+            waitForQualityGate true
+          }
+        }
+        stage('Test Reporting') {
+          steps {
+            jacoco(buildOverBuild: true)
+          }
+        }
       }
     }
   }
