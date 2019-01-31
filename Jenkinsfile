@@ -35,5 +35,13 @@ pipeline {
         bat 'gradle uploadArchives'
       }
     }
+    stage('Slack Notification') {
+      when {
+        branch 'master'
+      }
+      steps {
+        slackSend(channel: 'tp6', color: '#ffffff', message: 'tree reached slack notification')
+      }
+    }
   }
 }
