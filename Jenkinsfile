@@ -30,5 +30,10 @@ pipeline {
         }
       }
     }
+    stage('Deployment') {
+      steps {
+        bat(script: 'gradle uploadArchives', returnStdout: true, returnStatus: true)
+      }
+    }
   }
 }
