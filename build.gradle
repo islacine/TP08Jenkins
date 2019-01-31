@@ -1,17 +1,11 @@
 plugins {
-    id "org.sonarqube" version "2.6.2"
-    id 'info.solidsoft.pitest' version '1.3.0'
-    id "com.alexleventer.slack" version "1.0.3"
-
-
+    id 'java'
+    id 'jacoco'
 }
+
+
 group 'matrix'
 version '1.0'
-
-apply plugin: 'java'
-apply plugin: 'jacoco'
-
-
 
 sourceCompatibility = 1.8
 
@@ -23,25 +17,18 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-
-jacoco {
-    toolVersion = "0.8.2"
-    reportsDir = file("build/customJacocoReportDir")
+task myJavadocs(type: Javadoc) {
+    source = sourceSets.main.allJava
 }
 
-
-
-uploadArchives{
-    repositories{
-        maven{
+uploadArchives {
+    repositories {
+        maven {
             credentials {
                 username "myMavenRepo"
                 password "pwd"
             }
-            url "https://mymavenrepo.com/repo/oETH1woVhU5ZDD1eEhGd/"
+            url "https://mymavenrepo.com/repo/9tAqbuclrr1O2vznTfr7/"
         }
     }
 }
-
-
-
