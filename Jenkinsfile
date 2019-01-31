@@ -31,8 +31,11 @@ pipeline {
       }
     }
     stage('Deployment') {
+      when {
+        branch 'master'
+      }
       steps {
-        bat(script: 'gradle uploadArchives', returnStdout: true, returnStatus: true)
+        bat 'gradle uploadArchives'
       }
     }
   }
