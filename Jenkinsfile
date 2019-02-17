@@ -3,9 +3,7 @@ pipeline {
   stages {
     stage('build') {
       steps {
-        bat 'gradle build'
-        bat(script: 'gradle uploadArchives', returnStatus: true, returnStdout: true)
-      }
+       }
             post {
       failure {
         mail(subject: 'build failure ', body: 'the build failed ', bcc: 'fn_khettache@esi.dz', from: 'fk_mokrane@esi.dz')
